@@ -1,0 +1,137 @@
+# --- Types ---
+
+type SupplierInfo {
+  supplierId: Int!
+  supplierName: String!
+  supplierType: String!
+  supplierFromEmail: String
+  supplierGroup: String!
+  subSupplierGroup: String!
+  sopModel: String!
+  pbfFees: Boolean
+  feeAmount: Float
+  pointOfSale: String
+  gdsPcc: String
+  iataNumber: Int
+  gdsPrinter: String
+  slaInContract: String
+  sopUrl: String
+  createdBy: ID!
+  partnerConfigInfo: [PartnerConfigInfo]
+  partnerContactConfigInfo: [PartnerContactConfigInfo]
+  airlineContact: [AirlineContact]
+}
+
+type PartnerConfigInfo {
+  id: Int!
+  productId: Int!
+  cegContactChannelId: Int!
+  cegContactPartyId: Int!
+  partnerNotes: String
+  whiteLabelId: Int
+  ticketingAirlineCode: String
+  pointOfSale: String
+}
+
+type PartnerContactConfigInfo {
+  id: Int!
+  operatingHoursFrom: String
+  operatingHoursTo: String
+  operatingDays: String
+  gmtLocal: String!
+  opsHourType: Int!
+  contactType: Int!
+  contactValue: String!
+  contactNotes: String
+  countryName: String
+  languageName: String
+  bookingOrigin: Int
+  internalUsage: String
+  contactCategoryId: Int
+  isPcaEmail: Boolean
+}
+
+type AirlineContact {
+  id: Int!
+  carrierCode: String!
+  airlinePostBookingUrl: String
+  airlineBaggageUrl: String
+  airlineContactPageUrl: String
+}
+
+# --- Input Types ---
+
+input SupplierInfoInput {
+  supplierId: Int
+  supplierName: String
+  supplierType: String
+  supplierFromEmail: String
+  supplierGroup: String
+  subSupplierGroup: String
+  sopModel: String
+  pbfFees: Boolean
+  feeAmount: Float
+  pointOfSale: String
+  gdsPcc: String
+  iataNumber: Int
+  gdsPrinter: String
+  slaInContract: String
+  sopUrl: String
+  createdBy: ID
+  partnerConfigInfo: [PartnerConfigInfoInput]
+  partnerContactConfigInfo: [PartnerContactConfigInfoInput]
+  airlineContact: [AirlineContactInput]
+}
+
+input PartnerConfigInfoInput {
+  id: Int
+  productId: Int
+  cegContactChannelId: Int
+  cegContactPartyId: Int
+  partnerNotes: String
+  whiteLabelId: Int
+  ticketingAirlineCode: String
+  pointOfSale: String
+}
+
+input PartnerContactConfigInfoInput {
+  id: Int
+  operatingHoursFrom: String
+  operatingHoursTo: String
+  operatingDays: String
+  gmtLocal: String
+  opsHourType: Int
+  contactType: Int
+  contactValue: String
+  contactNotes: String
+  countryName: String
+  languageName: String
+  bookingOrigin: Int
+  internalUsage: String
+  contactCategoryId: Int
+  isPcaEmail: Boolean
+}
+
+input AirlineContactInput {
+  id: Int
+  carrierCode: String
+  airlinePostBookingUrl: String
+  airlineBaggageUrl: String
+  airlineContactPageUrl: String
+}
+
+# --- Queries (Retrieval) ---
+
+type Query {
+  getSupplierById(supplierId: Int!): SupplierInfo
+  listSuppliers: [SupplierInfo]
+}
+
+# --- Mutations (Create/Update/Delete) ---
+
+type Mutation {
+  createSupplier(supplier: SupplierInfoInput!): SupplierInfo
+  updateSupplier(supplierId: Int!, supplier: SupplierInfoInput!): SupplierInfo
+  partialUpdateSupplier(supplierId: Int!, supplier: SupplierInfoInput!): SupplierInfo
+  deleteSupplier(supplierId: Int!): Boolean
+}

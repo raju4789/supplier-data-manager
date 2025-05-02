@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: supplier-data-manager # Name of the Spring Boot application
+  jpa:
+    generate-ddl: true  # Generate DDL for the database schema
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/supplier_db # Default MySQL URL
+    username: admin # Default MySQL username
+    password: admin@2025 # Default MySQL password
+    driver-class-name: com.mysql.cj.jdbc.Driver # MySQL JDBC driver
+    init:
+      mode: always # Initialize SQL scripts on startup
+  graphql:
+    graphiql:
+      enabled: true
+
+
+server:
+  port: 8080 # Default Spring Boot application port

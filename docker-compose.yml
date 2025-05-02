@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # MySQL Service
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_container
+    restart: always
+    ports:
+      - "3306:3306" # Expose MySQL on port 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "admin@2025"
+      MYSQL_DATABASE: "supplier_db"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "admin@2025"
+    volumes:
+      - mysql_data:/var/lib/mysql # Persist MySQL data
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p$MYSQL_ROOT_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # phpMyAdmin Service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_container
+    platform: linux/amd64
+    restart: always
+    environment:
+      PMA_HOST: mysql # Service name of the MySQL container
+      PMA_PORT: 3306
+    ports:
+      - "8082:80" # Access phpMyAdmin on http://localhost:8082
+    depends_on:
+      - mysql
+
+
+volumes:
+  mysql_data: # Volume for MySQL data persistence
+
+networks:
+  app_network: # Custom network for container communication
+    driver: bridge
