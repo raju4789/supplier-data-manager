@@ -1,5 +1,6 @@
 package com.raju.supplier_data_manager.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,6 +21,7 @@ public class AirlineContact {
 
     @ManyToOne
     @JoinColumn(name = "supplier_id", nullable = false)
+    @JsonBackReference
     private SupplierInfo supplierInfo;
 
 }

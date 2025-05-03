@@ -1,5 +1,6 @@
 package com.raju.supplier_data_manager.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -46,12 +47,15 @@ public class SupplierInfo {
     private String createdBy;
 
     @OneToMany(mappedBy = "supplierInfo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<PartnerConfigInfo> partnerConfigInfo = new ArrayList<>();
 
     @OneToMany(mappedBy = "supplierInfo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<PartnerContactConfigInfo> partnerContactConfigInfo = new ArrayList<>();
 
     @OneToMany(mappedBy = "supplierInfo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<AirlineContact> airlineContact = new ArrayList<>();
 
 }

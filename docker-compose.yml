@@ -9,12 +9,13 @@ services:
     ports:
       - "3306:3306" # Expose MySQL on port 3306
     environment:
+      MYSQL_USER: "admin"
       MYSQL_ROOT_PASSWORD: "admin@2025"
       MYSQL_DATABASE: "supplier_db"
-      MYSQL_USER: "admin"
       MYSQL_PASSWORD: "admin@2025"
     volumes:
       - mysql_data:/var/lib/mysql # Persist MySQL data
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf # <-- add this line
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p$MYSQL_ROOT_PASSWORD"]
       interval: 10s
