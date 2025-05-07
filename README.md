@@ -203,6 +203,3 @@ If you have questions or suggestions, feel free to open an issue or reach out!
 
 ---
 
-*Made with ❤️ by [raju](https://www.linkedin.com/in/raju-m-l-n/)*
-
----
