@@ -1,7 +1,3 @@
-Absolutely! Here’s a **professional, beginner-friendly, and comprehensive `README.md`** for your `supplier-data-manager` project, tailored for GitHub and inspired by best practices. It covers project purpose, features, setup, usage, API documentation, and contribution guidelines.
-
----
-
 # Supplier Data Manager
 
 A full-stack Spring Boot application that demonstrates how to build both **REST API** and **GraphQL API** for managing supplier data, using MySQL as the backend. This project is designed to help you understand the practical differences between REST and GraphQL by providing both implementations side by side.
